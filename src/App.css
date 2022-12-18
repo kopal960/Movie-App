@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+.root-container {
+  margin: 1% 5% 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search {
+  justify-self: right;
+  top: 20px;
+  position: relative
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.searchInput {
+  display:inline-block;
+  background-image: url("./assets/search.svg");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: 10px 1rem;
+  margin-left: -23px;
+  margin-top: -20px;
+  /* Navy / 0 */
+  background: #FFFFFF;
+  /* Navy/500 */
+  border: 1px solid #C0C4CC;
+  border-radius: 2px;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* Navy/600 */
+  color: #898E9A;
+
+
+  /* Search for a movie */
+  height: 30px;
+  padding: 4px 0 4px 25px; 
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 12px;
+  /* identical to box height */
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  letter-spacing: -0.01em;
+
+  /* Navy/600 */
+  color: #898E9A;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.searchLogo {
+  z-index: 1;
+  position: relative;
+  top: 3px;
+  margin-left: 5px
+}
+
+hr {
+  /* Line 1 */
+color:  #C0C4CC;
+height: 0.5px;
+
 }

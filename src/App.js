@@ -42,13 +42,23 @@ function App() {
       setPosterSize(response.images.poster_sizes[2]);
 
       if(searchField.length === 0) {
-        response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=release_date.desc`);
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth();
+        let date = today.getDate();
+        month++;
+        if(month < 10) month = '0'+month;
+        if(date<10) date = '0'+date;
+        console.log(year, month, date);
+        response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&release_date.gte=${year+'-'+month+'-'+date}`);
       }
       else {
         response =  await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchField}`);
       }
       
       response = await response.json();
+      console.log(response);
+
       let updated = extractMovieDetails(response);
       setMovies(updated); 
     } catch (err) {
@@ -78,7 +88,7 @@ function App() {
     <h4 className="fw-bold">{searchField.length ===0 ? "Most Recent Movies" : `Movies matching ${searchField}`}</h4>
     <MovieList movies = {movies} />
 
-    <div class="fs-light mt-5 text-muted">
+    <div className="fs-light mt-5 text-muted">
     <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="60px"></img>
       All data for this application is taken from themoviedb 
     </div>
